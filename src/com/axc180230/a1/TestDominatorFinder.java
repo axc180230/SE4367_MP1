@@ -15,7 +15,7 @@ import soot.toolkits.graph.UnitGraph;
 public class TestDominatorFinder extends BodyTransformer{
 	public static void main(String[] args)	{
 
-		String mainclass = "GCD";
+		String mainclass = "com.axc180230.a1.GCD";
 
 //		//set classpath
 	    String javapath = System.getProperty("java.class.path");
