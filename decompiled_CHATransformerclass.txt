@@ -1,0 +1,59 @@
+Compiled from "CHATransformer.java"
+public class soot.jimple.toolkits.callgraph.CHATransformer extends soot.SceneTransformer {
+  public soot.jimple.toolkits.callgraph.CHATransformer(soot.Singletons$Global);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method soot/SceneTransformer."<init>":()V
+       4: return
+
+  public static soot.jimple.toolkits.callgraph.CHATransformer v();
+    Code:
+       0: invokestatic  #2                  // Method soot/G.v:()Lsoot/G;
+       3: invokevirtual #3                  // Method soot/G.soot_jimple_toolkits_callgraph_CHATransformer:()Lsoot/jimple/toolkits/callgraph/CHATransformer;
+       6: areturn
+
+  protected void internalTransform(java.lang.String, java.util.Map<java.lang.String, java.lang.String>);
+    Code:
+       0: new           #4                  // class soot/options/CHAOptions
+       3: dup
+       4: aload_2
+       5: invokespecial #5                  // Method soot/options/CHAOptions."<init>":(Ljava/util/Map;)V
+       8: astore_3
+       9: aload_3
+      10: invokevirtual #6                  // Method soot/options/CHAOptions.apponly:()Z
+      13: ifeq          26
+      16: new           #7                  // class soot/jimple/toolkits/callgraph/CallGraphBuilder
+      19: dup
+      20: invokespecial #8                  // Method soot/jimple/toolkits/callgraph/CallGraphBuilder."<init>":()V
+      23: goto          36
+      26: new           #7                  // class soot/jimple/toolkits/callgraph/CallGraphBuilder
+      29: dup
+      30: invokestatic  #9                  // Method soot/jimple/toolkits/pointer/DumbPointerAnalysis.v:()Lsoot/jimple/toolkits/pointer/DumbPointerAnalysis;
+      33: invokespecial #10                 // Method soot/jimple/toolkits/callgraph/CallGraphBuilder."<init>":(Lsoot/PointsToAnalysis;)V
+      36: astore        4
+      38: aload         4
+      40: invokevirtual #11                 // Method soot/jimple/toolkits/callgraph/CallGraphBuilder.build:()V
+      43: aload_3
+      44: invokevirtual #12                 // Method soot/options/CHAOptions.verbose:()Z
+      47: ifeq          85
+      50: getstatic     #13                 // Field logger:Lorg/slf4j/Logger;
+      53: new           #14                 // class java/lang/StringBuilder
+      56: dup
+      57: invokespecial #15                 // Method java/lang/StringBuilder."<init>":()V
+      60: ldc           #16                 // String Number of reachable methods:
+      62: invokevirtual #17                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      65: invokestatic  #18                 // Method soot/Scene.v:()Lsoot/Scene;
+      68: invokevirtual #19                 // Method soot/Scene.getReachableMethods:()Lsoot/jimple/toolkits/callgraph/ReachableMethods;
+      71: invokevirtual #20                 // Method soot/jimple/toolkits/callgraph/ReachableMethods.size:()I
+      74: invokevirtual #21                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      77: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      80: invokeinterface #23,  2           // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;)V
+      85: return
+
+  static {};
+    Code:
+       0: ldc           #24                 // class soot/jimple/toolkits/callgraph/CHATransformer
+       2: invokestatic  #25                 // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+       5: putstatic     #13                 // Field logger:Lorg/slf4j/Logger;
+       8: return
+}
