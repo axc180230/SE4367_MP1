@@ -28,7 +28,7 @@ public class TestSootCallGraph extends SceneTransformer {
 	    String path = javapath+File.pathSeparator+jredir;
 	    Scene.v().setSootClassPath(path);
 
-            //add an intra-procedural analysis phase to Soot
+        //add an intra-procedural analysis phase to Soot
 	    TestSootCallGraph analysis = new TestSootCallGraph();
 	    PackManager.v().getPack("wjtp").add(new Transform("wjtp.TestSootCallGraph", analysis));
 
