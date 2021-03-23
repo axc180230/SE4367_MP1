@@ -47,7 +47,7 @@ public class TestSootCallGraph extends SceneTransformer {
 
 	    //enable call graph
 	    //enableCHACallGraph();
-	    //enableSparkCallGraph();
+	    enableSparkCallGraph();
 
             //start working
 	    PackManager.v().runPacks();

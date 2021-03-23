@@ -1,0 +1,28 @@
+class com.axc180230.a1.Fish extends com.axc180230.a1.Animal
+{
+
+    void <init>()
+    {
+        com.axc180230.a1.Fish r0;
+
+        r0 := @this: com.axc180230.a1.Fish;
+
+        specialinvoke r0.<com.axc180230.a1.Animal: void <init>()>();
+
+        return;
+    }
+
+    public void saySomething()
+    {
+        com.axc180230.a1.Fish r0;
+        java.io.PrintStream $r1;
+
+        r0 := @this: com.axc180230.a1.Fish;
+
+        $r1 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r1.<java.io.PrintStream: void println(java.lang.String)>("...");
+
+        return;
+    }
+}
