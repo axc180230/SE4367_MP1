@@ -26,6 +26,14 @@ public class com.axc180230.a1.Example {
 }
 
 
+// Terminal output after running TestSootLoggingHeap.java
+Thread Thread-9 wrote static field <com.axc180230.a1.HelloThread: int x>
+Thread Thread-10 wrote static field <com.axc180230.a1.HelloThread: int x>
+Thread Thread-10 read instance field <com.axc180230.a1.HelloThread$TestThread: int y> of object Thread[Thread-10,5,Soot Threadgroup]
+Thread Thread-10 wrote instance field <com.axc180230.a1.HelloThread$TestThread: int y> of object Thread[Thread-10,5,Soot Threadgroup]
+Thread Thread-9 read instance field <com.axc180230.a1.HelloThread$TestThread: int y> of object Thread[Thread-9,5,Soot Threadgroup]
+Thread Thread-9 read static field <com.axc180230.a1.HelloThread: int x>
+Thread Thread-9 read static field <java.lang.System: java.io.PrintStream out>
 
 
 
