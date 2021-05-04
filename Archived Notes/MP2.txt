@@ -1,0 +1,160 @@
+C:\Users\angel\eclipse-workspace\a1\lib\android-platforms-master
+
+C:\Users\angel\eclipse-workspace\a1\lib
+
+-android-jars path/to/android-platforms -process-dir sqlite.db.apk
+
+-android-jars C:\Users\angel\eclipse-workspace\a1\lib\android-platforms-master -process-dir C:\Users\angel\eclipse-workspace\a1\lib sq3.apk
+
+
+
+Soot started on Tue Apr 27 19:36:49 CDT 2021
+[main] INFO soot.toDex.DexPrinter - Writing APK to "sootOutput\sq3.apk".
+[main] INFO soot.toDex.DexPrinter - Do not forget to sign the .apk file with jarsigner and to align it with zipalign
+Soot finished on Tue Apr 27 19:36:52 CDT 2021
+Soot has run for 0 min. 3 sec.
+
+
+Generate Keystore
+cd /c/"Program Files"/Java/jdk1.8.0_281/bin
+keytool -genkey -v -keystore my.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias app
+
+angel@LAPTOP-IQD0GGN2 MINGW64 ~
+$ cd /c/"Program Files"/Java/jdk1.8.0_281/bin
+
+angel@LAPTOP-IQD0GGN2 MINGW64 /c/Program Files/Java/jdk1.8.0_281/bin
+$ keytool -genkey -v -keystore my.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias app
+Enter keystore password:
+Re-enter new password:
+What is your first and last name?
+  [Unknown]:  Angel Castaneda
+What is the name of your organizational unit?
+  [Unknown]:  SE 4367
+What is the name of your organization?
+  [Unknown]:  UTD
+What is the name of your City or Locality?
+  [Unknown]:  Dallas
+What is the name of your State or Province?
+  [Unknown]:  Texas
+What is the two-letter country code for this unit?
+  [Unknown]:  TX
+Is CN=Angel Castaneda, OU=SE 4367, O=UTD, L=Dallas, ST=Texas, C=TX correct?
+  [no]:  Yes
+
+Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) wi
+th a validity of 10,000 days
+        for: CN=Angel Castaneda, OU=SE 4367, O=UTD, L=Dallas, ST=Texas, C=TX
+[Storing my.keystore]
+
+
+
+
+
+
+Installed Android Studio SDK Build Tools location
+C:\Users\angel\AppData\Local\Android\Sdk
+C:\Users\angel\AppData\Local\Android\Sdk\build-tools\30.0.3\
+/c/Users/angel/eclipse-workspace/a1/sootOutput
+
+To Zipalign:
+/c/Users/angel/AppData/Local/Android/Sdk/build-tools/30.0.3/zipalign -p 4 /c/Users/angel/eclipse-workspace/a1/sootOutput/sq3.apk /c/Users/angel/eclipse-workspace/a1/sootOutput/my-aligned.apk
+
+To Verify Zipalign
+/c/Users/angel/AppData/Local/Android/Sdk/build-tools/30.0.3/zipalign -c 4 /c/Users/angel/eclipse-workspace/a1/sootOutput/my-aligned.apk
+
+
+Sign & Verify
+cd /c/"Program Files"/Java/jdk1.8.0_281/bin
+/c/"Program Files"/Java/jdk1.8.0_281/bin/jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my.keystore /c/Users/angel/eclipse-workspace/a1/sootOutput/my-aligned.apk app
+
+
+
+angel@LAPTOP-IQD0GGN2 MINGW64 /c/Program Files/Java/jdk1.8.0_281/bin
+$ /c/"Program Files"/Java/jdk1.8.0_281/bin/jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my.keystore /c/Users/angel/eclipse-workspace/a1/sootOutput/my-aligned.apk app
+Enter Passphrase for keystore:
+ updating: META-INF/MANIFEST.MF
+   adding: META-INF/APP.SF
+   adding: META-INF/APP.RSA
+  signing: res/drawable/action_about.png
+  signing: res/drawable/action_search.png
+  signing: res/drawable/action_settings.png
+  signing: res/drawable/content_discard.png
+  signing: res/drawable/content_edit.png
+  signing: res/drawable/content_email.png
+  signing: res/drawable/content_new.png
+  signing: res/drawable/content_remove.png
+  signing: res/drawable/database.png
+  signing: res/drawable/folder.png
+  signing: res/layout/about.xml
+  signing: res/layout/apps.xml
+  signing: res/layout/bookmarks.xml
+  signing: res/layout/browser.xml
+  signing: res/layout/database_list.xml
+  signing: res/layout/database_records.xml
+  signing: res/layout/database_tables.xml
+  signing: res/layout/filter.xml
+  signing: res/layout/fragment_tabs_pager.xml
+  signing: res/layout/list_item_app.xml
+  signing: res/layout/list_item_bookmark.xml
+  signing: res/layout/list_item_details.xml
+  signing: res/layout/list_item_simple.xml
+  signing: res/layout/recent.xml
+  signing: res/layout/tab_view.xml
+  signing: res/layout/table_list_item.xml
+  signing: res/layout/table_record.xml
+  signing: res/xml/preferences.xml
+  signing: AndroidManifest.xml
+  signing: resources.arsc
+  signing: res/layout-v11/about.xml
+  signing: res/layout-v11/filter.xml
+  signing: res/layout-v11/table_record.xml
+  signing: res/drawable-hdpi/action_about.png
+  signing: res/drawable-hdpi/action_search.png
+  signing: res/drawable-hdpi/action_settings.png
+  signing: res/drawable-hdpi/content_discard.png
+  signing: res/drawable-hdpi/content_edit.png
+  signing: res/drawable-hdpi/content_email.png
+  signing: res/drawable-hdpi/content_new.png
+  signing: res/drawable-hdpi/content_remove.png
+  signing: res/drawable-hdpi/database.png
+  signing: res/drawable-ldpi/database.png
+  signing: res/drawable-mdpi/action_about.png
+  signing: res/drawable-mdpi/action_search.png
+  signing: res/drawable-mdpi/action_settings.png
+  signing: res/drawable-mdpi/content_discard.png
+  signing: res/drawable-mdpi/content_edit.png
+  signing: res/drawable-mdpi/content_email.png
+  signing: res/drawable-mdpi/content_new.png
+  signing: res/drawable-mdpi/content_remove.png
+  signing: res/drawable-mdpi/database.png
+  signing: res/drawable-xhdpi/action_about.png
+  signing: res/drawable-xhdpi/action_search.png
+  signing: res/drawable-xhdpi/action_settings.png
+  signing: res/drawable-xhdpi/content_discard.png
+  signing: res/drawable-xhdpi/content_edit.png
+  signing: res/drawable-xhdpi/content_email.png
+  signing: res/drawable-xhdpi/content_new.png
+  signing: res/drawable-xhdpi/content_remove.png
+  signing: classes.dex
+>>> Signer
+    X.509, CN=Angel Castaneda, OU=SE 4367, O=UTD, L=Dallas, ST=Texas, C=TX
+    [trusted certificate]
+
+jar signed.
+
+Warning:
+The signer's certificate is self-signed.
+The SHA1 algorithm specified for the -digestalg option is considered a security
+risk. This algorithm will be disabled in a future update.
+The SHA1withRSA algorithm specified for the -sigalg option is considered a secur
+ity risk. This algorithm will be disabled in a future update.
+
+
+
+
+
+
+
+
+
+

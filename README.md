@@ -1,3 +1,163 @@
+# SE4367_MP2 (See below for MP1)
+
+## Part One
+I added the AndroidInstrument to the same package and location that I had the MP1 files in. I replaced the "Hello" value with my netid, "axc180230". Then I instrumented it using one of the following options.
+
+### Code to run:
+C:\Program Files\Java\jre1.8.0_281\bin\javaw.exe
+-Dfile.encoding=UTF-8
+-classpath "C:\Users\angel\eclipse-workspace\a1\lib\soot-3.3.0.jar;C:\Users\angel\eclipse-workspace\a1\bin;C:\Users\angel\eclipse-workspace\a1\lib" com.axc180230.a1.AndroidInstrument
+-android-jars "C:\Users\angel\eclipse-workspace\a1\lib\android-platforms-master"
+-process-dir "C:\Users\angel\eclipse-workspace\a1\lib\sq3.apk"
+
+### In IDE (Eclipse)
+Run class AndroidInstrument
+
+### Code Output:
+```
+Soot started on Tue Apr 27 19:36:49 CDT 2021
+[main] INFO soot.toDex.DexPrinter - Writing APK to "sootOutput\sq3.apk".
+[main] INFO soot.toDex.DexPrinter - Do not forget to sign the .apk file with jarsigner and to align it with zipalign
+Soot finished on Tue Apr 27 19:36:52 CDT 2021
+Soot has run for 0 min. 3 sec.
+```
+
+### Generated apk File
+New generated apk file in 'a1\sootOutput' with file name of 'sq3.apk'
+
+## Part Two: Step 1 Generate Keystore
+Next, I generated the  keystore. 
+
+### Code to Run (In Command Line):
+cd /c/"Program Files"/Java/jdk1.8.0_281/bin
+keytool -genkey -v -keystore my.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias app
+
+### Code Output:
+```
+Enter keystore password:
+Re-enter new password:
+What is your first and last name?
+  [Unknown]:  Angel Castaneda
+What is the name of your organizational unit?
+  [Unknown]:  SE 4367
+What is the name of your organization?
+  [Unknown]:  UTD
+What is the name of your City or Locality?
+  [Unknown]:  Dallas
+What is the name of your State or Province?
+  [Unknown]:  Texas
+What is the two-letter country code for this unit?
+  [Unknown]:  TX
+Is CN=Angel Castaneda, OU=SE 4367, O=UTD, L=Dallas, ST=Texas, C=TX correct?
+  [no]:  Yes
+
+Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) wi
+th a validity of 10,000 days
+        for: CN=Angel Castaneda, OU=SE 4367, O=UTD, L=Dallas, ST=Texas, C=TX
+[Storing my.keystore]
+```
+
+## Part Two: Step 2 Zipalign
+Next, I installed Android Studio and used the zipalign tool to optimze and align. The new generated apk file in 'a1\sootOutput' with file name of 'my-aligned.apk'.
+
+### Code to Run (In Command Line):
+To Zipalign:
+/c/Users/angel/AppData/Local/Android/Sdk/build-tools/30.0.3/zipalign -p 4 /c/Users/angel/eclipse-workspace/a1/sootOutput/sq3.apk /c/Users/angel/eclipse-workspace/a1/sootOutput/my-aligned.apk
+
+To Verify Zipalign
+/c/Users/angel/AppData/Local/Android/Sdk/build-tools/30.0.3/zipalign -c 4 /c/Users/angel/eclipse-workspace/a1/sootOutput/my-aligned.apk
+
+## Part Three: Step 3 Sign & Verify:
+Finally, I used Jarsinger to sign and verify the new aligned apk file. 
+
+### Code to Run (In Command Line):
+cd /c/"Program Files"/Java/jdk1.8.0_281/bin
+/c/"Program Files"/Java/jdk1.8.0_281/bin/jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my.keystore /c/Users/angel/eclipse-workspace/a1/sootOutput/my-aligned.apk app
+
+
+### Code Output:
+```
+Enter Passphrase for keystore:
+ updating: META-INF/MANIFEST.MF
+   adding: META-INF/APP.SF
+   adding: META-INF/APP.RSA
+  signing: res/drawable/action_about.png
+  signing: res/drawable/action_search.png
+  signing: res/drawable/action_settings.png
+  signing: res/drawable/content_discard.png
+  signing: res/drawable/content_edit.png
+  signing: res/drawable/content_email.png
+  signing: res/drawable/content_new.png
+  signing: res/drawable/content_remove.png
+  signing: res/drawable/database.png
+  signing: res/drawable/folder.png
+  signing: res/layout/about.xml
+  signing: res/layout/apps.xml
+  signing: res/layout/bookmarks.xml
+  signing: res/layout/browser.xml
+  signing: res/layout/database_list.xml
+  signing: res/layout/database_records.xml
+  signing: res/layout/database_tables.xml
+  signing: res/layout/filter.xml
+  signing: res/layout/fragment_tabs_pager.xml
+  signing: res/layout/list_item_app.xml
+  signing: res/layout/list_item_bookmark.xml
+  signing: res/layout/list_item_details.xml
+  signing: res/layout/list_item_simple.xml
+  signing: res/layout/recent.xml
+  signing: res/layout/tab_view.xml
+  signing: res/layout/table_list_item.xml
+  signing: res/layout/table_record.xml
+  signing: res/xml/preferences.xml
+  signing: AndroidManifest.xml
+  signing: resources.arsc
+  signing: res/layout-v11/about.xml
+  signing: res/layout-v11/filter.xml
+  signing: res/layout-v11/table_record.xml
+  signing: res/drawable-hdpi/action_about.png
+  signing: res/drawable-hdpi/action_search.png
+  signing: res/drawable-hdpi/action_settings.png
+  signing: res/drawable-hdpi/content_discard.png
+  signing: res/drawable-hdpi/content_edit.png
+  signing: res/drawable-hdpi/content_email.png
+  signing: res/drawable-hdpi/content_new.png
+  signing: res/drawable-hdpi/content_remove.png
+  signing: res/drawable-hdpi/database.png
+  signing: res/drawable-ldpi/database.png
+  signing: res/drawable-mdpi/action_about.png
+  signing: res/drawable-mdpi/action_search.png
+  signing: res/drawable-mdpi/action_settings.png
+  signing: res/drawable-mdpi/content_discard.png
+  signing: res/drawable-mdpi/content_edit.png
+  signing: res/drawable-mdpi/content_email.png
+  signing: res/drawable-mdpi/content_new.png
+  signing: res/drawable-mdpi/content_remove.png
+  signing: res/drawable-mdpi/database.png
+  signing: res/drawable-xhdpi/action_about.png
+  signing: res/drawable-xhdpi/action_search.png
+  signing: res/drawable-xhdpi/action_settings.png
+  signing: res/drawable-xhdpi/content_discard.png
+  signing: res/drawable-xhdpi/content_edit.png
+  signing: res/drawable-xhdpi/content_email.png
+  signing: res/drawable-xhdpi/content_new.png
+  signing: res/drawable-xhdpi/content_remove.png
+  signing: classes.dex
+>>> Signer
+    X.509, CN=Angel Castaneda, OU=SE 4367, O=UTD, L=Dallas, ST=Texas, C=TX
+    [trusted certificate]
+
+jar signed.
+
+Warning:
+The signer's certificate is self-signed.
+The SHA1 algorithm specified for the -digestalg option is considered a security
+risk. This algorithm will be disabled in a future update.
+The SHA1withRSA algorithm specified for the -sigalg option is considered a secur
+ity risk. This algorithm will be disabled in a future update.
+```
+
+
+
 # SE4367_MP1
 
 ## Disclaimer

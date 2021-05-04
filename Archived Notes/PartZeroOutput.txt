@@ -1,0 +1,25 @@
+r0 := @this: com.axc180230.a1.HelloThread$TestThread
+<com.axc180230.a1.HelloThread: int x> = 1
+return
+specialinvoke r0.<java.lang.Thread: void <init>()>()
+return
+r0 := @this: com.axc180230.a1.HelloThread
+specialinvoke r0.<java.lang.Object: void <init>()>()
+return
+r0 := @this: com.axc180230.a1.HelloThread$TestThread
+<com.axc180230.a1.HelloThread: int x> = 0
+$i0 = r0.<com.axc180230.a1.HelloThread$TestThread: int y>
+$i1 = $i0 + 1
+r0.<com.axc180230.a1.HelloThread$TestThread: int y> = $i1
+return
+r0 := @parameter0: java.lang.String[]
+$r2 = new com.axc180230.a1.HelloThread$TestThread
+specialinvoke $r2.<com.axc180230.a1.HelloThread$TestThread: void <init>()>()
+virtualinvoke $r2.<com.axc180230.a1.HelloThread$TestThread: void start()>()
+$i3 = $r2.<com.axc180230.a1.HelloThread$TestThread: int y>
+$i1 = <com.axc180230.a1.HelloThread: int x>
+$i2 = 1 / $i1
+i0 = $i3 + $i2
+$r3 = <java.lang.System: java.io.PrintStream out>
+virtualinvoke $r3.<java.io.PrintStream: void println(int)>(i0)
+return
